@@ -58,3 +58,4 @@ docker compose down -v       # DB データ（volume）も削除
 ```bash
 docker compose exec web python manage.py startapp records
 ```
+# Django_training
