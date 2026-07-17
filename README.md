@@ -1,6 +1,6 @@
 # freelance-accounting
 
-フリーランスの売上・経費を記録し、カテゴリ別・月別にグラフ化する学習用 Django アプリ。
+架空のフリーランスの売上・経費を記録し、カテゴリ別・月別にグラフ化する学習用 Django アプリ。
 
 - Django 6.0 / Python 3.13（コンテナ内）
 - PostgreSQL 18
@@ -48,12 +48,6 @@ docker compose exec web python manage.py createsuperuser
 docker compose down          # コンテナ停止
 docker compose down -v       # DB データ（volume）も削除
 ```
-
-## 次のステップ
-
-この環境は「箱」だけの状態です。次は Phase 2 として
-`records` アプリを作成し、`Category` / `Transaction`（必要なら `Client`）
-モデルを実装していきます。
 
 ```bash
 docker compose exec web python manage.py startapp records
