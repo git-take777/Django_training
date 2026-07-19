@@ -22,7 +22,7 @@ services:
     volumes:
       - ./src:/app
     ports:
-      - "8000:8000"
+      - "9274:8000"
     depends_on:
       db:
         condition: service_healthy

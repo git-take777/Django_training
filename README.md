@@ -52,4 +52,40 @@ docker compose down -v       # DB データ（volume）も削除
 ```bash
 docker compose exec web python manage.py startapp records
 ```
+
 # Django_training
+
+## tailwindcssの導入
+
+`django-tailwind` の **Standalone（Tailwind v4, Node.js不要）** 構成を使用。
+`theme` アプリとして生成済み（`src/theme/`）で、`tailwind_css` タグを読み込んだテンプレートで利用できる。
+
+セットアップ済みの状態でリポジトリを clone した場合、以下だけでよい:
+
+```bash
+# コンテナ起動
+docker compose up -d
+
+# Tailwind CLI（スタンドアロンバイナリ）を起動し、CSSの変更を監視・ビルドする
+# 開発中はこのプロセスを動かし続ける
+docker compose exec web python manage.py tailwind start
+```
+
+初回のみ、または `theme` アプリを作り直す場合:
+
+```bash
+docker compose exec web python manage.py tailwind init
+# → アプリ名を聞かれたら「theme」と入力
+# → テンプレート選択で「1 (Tailwind v4 Standalone)」を選択（Node.js不要）
+```
+
+### テンプレートでの使い方
+
+```html
+{% load tailwind_tags %}
+<head>
+  {% tailwind_css %}
+</head>
+```
+
+`src/theme/templates/base.html` を参考に、各テンプレートで `{% tailwind_css %}` を読み込むか、`base.html` を extends する。

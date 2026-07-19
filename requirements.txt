@@ -1,3 +1,4 @@
 Django>=6.0,<6.1
 psycopg[binary]>=3.2
 django-environ>=0.11
+django-tailwind[reload]>=3.8
